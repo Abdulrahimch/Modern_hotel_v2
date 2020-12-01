@@ -1,0 +1,48 @@
+version: '3'
+services:
+  nodejs:
+    container_name: nodejs
+    build:
+      context: .
+    ports:
+    - '5000:5000'
+    volumes:
+    - '.:/app'
+    command: >
+      sh -c "nodemon /app/src/app.js"
+
+    restart: always
+    links:
+      - mongo
+
+  mongo:
+    container_name: mongo
+    image: mongo
+    ports:
+      - '27017:27017'
+    restart: always
+
+#  broker:
+#    container_name: broker
+#    network_mode: bridge
+#    build: ./mqtt_broker
+#    ports:
+#      - '183:1883'
+#    volumes:
+#      - './mqtt_broker/mqtt_broker.py:/mqtt_broker.py'
+#    restart: always
+
+  angular:
+    container_name: angular
+    build:
+      context: ./angular_frontend/dark
+    ports:
+      - '4200:4200'
+    restart: always
+
+
+
+
+
+
+
