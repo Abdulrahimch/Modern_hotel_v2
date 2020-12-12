@@ -1,0 +1,17 @@
+sudo: required
+services:
+  - docker
+language: bash
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-1"
+  app:  "angular2"
+  env:  "Angular2-env"
+  bucket_name: "elasticbeanstalk-us-east-1-219009475788"
+  bucket_path: "angular2"
+  on:
+    branch: main
+
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
+

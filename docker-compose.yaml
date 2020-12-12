@@ -3,14 +3,11 @@ services:
   nodejs:
     container_name: nodejs
     build:
-      context: .
+      context: ./nodejs_backend
     ports:
     - '5000:5000'
     volumes:
     - '.:/app'
-    command: >
-      sh -c "nodemon /app/src/app.js"
-
     restart: always
     links:
       - mongo
@@ -35,11 +32,20 @@ services:
   angular:
     container_name: angular
     build:
-      context: ./angular_frontend/dark
+      context: ./angular_frontend
     ports:
       - '4200:4200'
     restart: always
 
+#  nginx:
+#    build:
+#      context: ./nginx
+#    ports:
+#    - '3080:80'
+#    restart: always
+#    depends_on:
+#      - angular
+#      - nodejs
 
 
 
