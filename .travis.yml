@@ -2,16 +2,16 @@ services:
   - docker
 
 before_install:
-  - docker build -t Abdulrahim/nodejs_test -f Dockerfile.dev ./nodejs_backend
+  - docker build -t abdulrahim/nodejs_test -f ./nodejs_backend/Dockerfile.dev ./nodejs_backend
 
 script:
-  - docker run Abdulrahim/nodejs_test
+  - docker run abdulrahim/nodejs_test
 
 after_success:
-  - docker build -t Abdulrahim/nodejs_prod ./nodejs_backend
-  - docker build -t Abdulrahim/angular_prod ./angular_fronten
+  - docker build -t abdulrahim/nodejs_prod ./nodejs_backend
+  - docker build -t abdulrahim/angular_prod ./angular_frontend
   # Log in to Docker hub.
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Push images being build into Docker hub.
-  - docker push Abdulrahim/nodejs_prod
-  - docker push Abdulrahim/angular_prod
+  - docker push abdulrahim/nodejs_prod
+  - docker push abdulrahim/angular_prod
