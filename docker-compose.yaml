@@ -29,13 +29,13 @@ services:
 #      - './mqtt_broker/mqtt_broker.py:/mqtt_broker.py'
 #    restart: always
 
-  angular:
-    container_name: angular
-    build:
-      context: ./angular_frontend
-    ports:
-      - '4200:4200'
-    restart: always
+#  angular:
+#    container_name: angular
+#    build:
+#      context: ./angular_frontend
+#    ports:
+#      - '4200:4200'
+#    restart: always
 
 #  nginx:
 #    build:

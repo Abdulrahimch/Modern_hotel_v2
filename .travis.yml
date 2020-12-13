@@ -1,13 +1,7 @@
 services:
   - docker
 
-before_install:
-  - docker build -t abdulrahim/nodejs_test -f ./nodejs_backend/Dockerfile.dev ./nodejs_backend
-
 script:
-  - docker run abdulrahim/nodejs_test
-
-after_success:
   - docker build -t abdulrahim/nodejs_prod ./nodejs_backend
   - docker build -t abdulrahim/angular_prod ./angular_frontend
   # Log in to Docker hub.
