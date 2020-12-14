@@ -5,7 +5,7 @@ script:
   - docker build -t abdulrahim/nodejs_prod ./nodejs_backend
   - docker build -t abdulrahim/angular_prod ./angular_frontend
   # Log in to Docker hub.
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker login -u "$DOCKER_ID" -p "$DOCKER_PASSWORD"
   # Push images being build into Docker hub.
   - docker push abdulrahim/nodejs_prod
   - docker push abdulrahim/angular_prod
